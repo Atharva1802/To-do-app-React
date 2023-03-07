@@ -12,6 +12,10 @@ function App() {
     setTasks(prevState => [...prevState, task]) //Update the array of tasks 
   }
 
+  const deleteTask = (id) => {
+    setTasks(prevState => prevState.filter(t => t.id !== id));
+  }
+
   return (
     <div className="container">
       <header>
@@ -20,7 +24,11 @@ function App() {
        {/* Gives CustomForm access to this Function form App.jsx */}
       <CustomForm addTask={addTask} />
       {/* Tasks iff exists is passed to task list and it is called */}
-      {tasks && <TaskList tasks={tasks} />}
+      {tasks && (
+        <TaskList
+          tasks={tasks} />
+          deleteTask = {deleteTask}
+      )}
     </div>
   )
 }
