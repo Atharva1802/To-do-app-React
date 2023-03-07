@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import styles from './TaskItem.module.css'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, PencilIcon } from '@heroicons/react/24/outline'
 
 const TaskItem = ({ task }) => {
     const [isChecked, setIsChecked] = useState(task.checked);
@@ -35,7 +35,21 @@ const TaskItem = ({ task }) => {
                       </p>
                   </label>
               </div>
+                <div className={styles["task-group"]}>
+                  <button
+                      className='btn'
+                      aria-label = {`Update ${task.name} Task`}
+                    //   onClick = {}
+                      >
+                         <PencilIcon
+                              width={24}
+                              height ={24}
+                          />
+                  </button> 
+                </div>
           </div>
+
+
       </li>
   )
   }
