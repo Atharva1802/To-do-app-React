@@ -1,7 +1,13 @@
+import { useState } from 'react'
+
 import styles from './TaskItem.module.css'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
 const TaskItem = ({ task }) => {
+    const [isChecked, setIsChecked] = useState(task.checked);
+
+    const handleCheckboxchange = (e) => setIsChecked(!isChecked);
+
   return (
       <li className={styles.task}>
           <div className="task-group">
@@ -9,8 +15,8 @@ const TaskItem = ({ task }) => {
                   <input
                       className={styles.checkbox}
                       type="checkbox"
-                      checked={task.checked}
-                    //   onChange={}
+                      checked={isChecked}
+                      onChange={handleCheckboxchange}
                       name={task.name}
                       id={task.id}
                   >
