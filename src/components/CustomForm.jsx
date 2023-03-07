@@ -3,14 +3,16 @@ import { useState } from 'react';
 
 
 // library imports
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
+// destructured prop in the arrow fucntion below (from App.jsx)
 const CustomForm = ({ addTask }) => {
   const [task, setTask] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();     // prevents alteration on refresh
-    addTask({
+      addTask({
+      // Task object
       name: task,
       checked: false,
       id: Date.now()
@@ -21,9 +23,12 @@ const CustomForm = ({ addTask }) => {
   return (
     <form
       className="todo"
-      onSubmit={handleFormSubmit}
+      // HTML works best with onSubmit rather than using onClickListener
+      onSubmit={handleFormSubmit}  
+      
       >
       <div className="wrapper">
+        {/* Virtual Dom keeps value and updates its value as the state updates */}
         <input
           type="text"
           id="task"
@@ -45,7 +50,7 @@ const CustomForm = ({ addTask }) => {
         aria-label="Add Task"
         type="submit"
         >
-        <PlusIcon />
+        <PlusCircleIcon />
       </button>
     </form>
   )
