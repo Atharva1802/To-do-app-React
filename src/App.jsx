@@ -13,7 +13,16 @@ function App() {
   }
 
   const deleteTask = (id) => {
-    setTasks(prevState => prevState.filter(t => t.id !== id));
+    setTasks(prevState => prevState.filter(t => t.id !== id))
+  }
+
+  // Duplicate tasks update prevention
+  const toggleTask = (id) => {
+    setTasks(prevState => prevState.map(t => (
+
+      t.id === id ? {...t, checked: !t.checked} : t   // Updates task iff not already id'd
+      
+    )))
   }
 
   return (
@@ -26,8 +35,10 @@ function App() {
       {/* Tasks iff exists is passed to task list and it is called */}
       {tasks && (
         <TaskList
-          tasks={tasks} />
-          deleteTask = {deleteTask}
+          tasks={tasks}
+          deleteTask={deleteTask}
+          toggleTask ={toggleTask}
+        />
       )}
     </div>
   )

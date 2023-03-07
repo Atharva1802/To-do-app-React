@@ -2,7 +2,7 @@ import TaskItem from './TaskItem'
 
 import styles from './TaskList.module.css'  // makes styles usable by the below component
 
-const TaskList = ({ tasks, deleteTask }) => {
+const TaskList = ({ tasks, deleteTask, toggleTask }) => {
     return (
         <ul className={styles.tasks}>
             {
@@ -10,7 +10,8 @@ const TaskList = ({ tasks, deleteTask }) => {
                     <TaskItem
                         key={task.id}
                         task={task}
-                        deleteTask = {deleteTask}
+                        deleteTask={deleteTask}
+                        toggleTask={toggleTask}
                     />
                 ))
             }
