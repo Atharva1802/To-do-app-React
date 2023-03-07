@@ -10,6 +10,7 @@ button {
   font: inherit;
   border: none;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 input,
