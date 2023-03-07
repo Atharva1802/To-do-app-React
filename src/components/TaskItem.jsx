@@ -7,6 +7,7 @@ const TaskItem = ({ task }) => {
           <div className="task-group">
               <div className={styles["task-group"]}>
                   <input
+                      className={styles.checkbox}
                       type="checkbox"
                       checked={task.checked}
                     //   onChange={}
@@ -19,7 +20,13 @@ const TaskItem = ({ task }) => {
                       className={styles.label}
                   >
                       {task.name}
-                      <p className={styles.checkmark}></p>
+                      <p className={styles.checkmark}>
+                          <CheckIcon
+                              strokeWidth={5}
+                              width={24}
+                              height={24}
+                          />
+                      </p>
                   </label>
               </div>
           </div>
