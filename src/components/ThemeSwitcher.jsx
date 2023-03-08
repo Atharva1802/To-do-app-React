@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // import global styles
 import styles from './ThemeSwitcher.module.css'
@@ -7,10 +7,17 @@ import styles from './ThemeSwitcher.module.css'
 import { XMarkIcon, SunIcon, MoonIcon, SwatchIcon } from '@heroicons/react/24/outline'
 
 const ThemeSwitcher = () => {
-  const [isColorPicking, setIsColorPicking] = useState(false)
-  const [theme, setTheme] = useState('light')
-  const handleThemeBtn = () => setTheme(theme === "light" ? "dark" : "light")
+  const [isColorPicking, setIsColorPicking] = useState(false) // State to pick and set color 
+  const [theme, setTheme] = useState('light')   // State to pick and set theme
+  const [hue, setHue] = useState('158')    // change this hue and default accent color changes
   
+  // Easiest way to handle a changing piece of State is useEffect hook
+    // Here accent color picker is bought to oaction using use effec Hook
+
+    useEffect(() => {
+        document.documentElement.setAttribute('color-scheme', theme)
+    }, [theme])
+
     return (
       <aside
         className={styles.wrapper}
@@ -20,12 +27,22 @@ const ThemeSwitcher = () => {
             isColorPicking
                 ? (
                 <>
-                    <button>
-                        a            
+                    <button
+                        className={`btn ${styles.close}`}
+                        aria-label="close color picking mode"
+                        onClick={() => setIsColorPicking(false)}
+                    >
+                        <XMarkIcon />
                     </button>
-                    <input type="range" />
-                        
-                    
+                            <input
+                                className={styles.picker}
+                                type="range"
+                                min='0'
+                                max='360'
+                                aria-label='Change color theme slider'
+                                value={hue}
+                                onInput={(e) => setHue(e.target.value)}
+                            />
                 </>
                 )
                 : (
@@ -35,7 +52,9 @@ const ThemeSwitcher = () => {
                                 aria-label={`change theme to 
                                 ${theme === "light" ? "dark" : "light"} mode`}
                                 role="switch"
-                                onClick={handleThemeBtn}
+                                onClick={() => setTheme(theme === "light"
+                                    ? "dark"
+                                    : "light")}
                             >
                             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
                         </button>
