@@ -42,6 +42,7 @@ const ThemeSwitcher = () => {
                             <button
                                 className='btn'
                                 aria-label='Enable color picking mode'
+                                onClick={() => setIsColorPicking(true)}
                             >
                             <SwatchIcon />
                         </button>
