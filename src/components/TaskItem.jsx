@@ -8,6 +8,8 @@ import { CheckIcon  } from '@heroicons/react/24/outline';
 import { PencilSquareIcon  } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
+
+// Function to implement functionalitites on each of the task item
 const TaskItem = ({task, deleteTask, toggleTask, enterEditMode}) => {
   const [isChecked, setIsChecked ] = useState(task.checked);
 
