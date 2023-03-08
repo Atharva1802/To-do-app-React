@@ -20,7 +20,7 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
     return () => {
       window.removeEventListener('keydown', closeModalIfEscaped)
     }
-  }, [])
+  }, [closeEditMode])
 
   const handleFormSubmit = (e) => {
     e.preventDefault();     // prevents alteration on refresh
@@ -31,7 +31,7 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
     <div
       role="dialog"
       aria-labelledby='editTask'
-      // onClick ={}
+      onClick ={(e) => {e.target === e.currentTarget && closeEditMode()}}
     >
     <form
       className="todo"
