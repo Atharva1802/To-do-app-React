@@ -2,10 +2,13 @@ import { useState } from 'react'
 
 // custom components
 import CustomForm from './components/CustomForm'
+import EditForm from './components/EditForm';
 import TaskList from './components/TaskList';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [editedTask, setEditedTask] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   // Function to take tasks
   const addTask = (task) => {
@@ -25,20 +28,46 @@ function App() {
     )))
   }
 
+    const updateTask = (task) => {
+    setTasks(prevState => prevState.map(t => (
+
+      t.id === task.id
+        ? { ...t, name: task.name }
+        : t   // Updates task iff not already id'd
+    )))
+      // TODO: To close Edit Task mode
+    }
+  
+  const enterEditMode = (task) => {
+    setEditedTask(task)
+    setIsEditing(true)
+  }
+
   return (
     <div className="container">
       <header>
         <h1>My Task List</h1>
       </header>
-      <EditForm />
        {/* Gives CustomForm access to this Function form App.jsx */}
       <CustomForm addTask={addTask} />
+      {
+        isEditing && (
+        <EditForm
+          editedTask={editedTask}
+          updateTask={updateTask}
+          enterEditMode={enterEditMode}
+        />
+        )
+      }
+      
+      
       {/* Tasks iff exists is passed to task list and it is called */}
       {tasks && (
         <TaskList
           tasks={tasks}
           deleteTask={deleteTask}
-          toggleTask ={toggleTask}
+          toggleTask={toggleTask}
+          enterEditMode={enterEditMode}
         />
       )}
     </div>
