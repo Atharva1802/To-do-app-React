@@ -9,6 +9,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [editedTask, setEditedTask] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [previousFocusElement, setPreviousFocusElement] = useState(null);
+
 
   // Function to take tasks
   const addTask = (task) => {
@@ -42,12 +44,14 @@ function App() {
   const closeEditMode = () => {
     setIsEditing(false)
     // set focus to the previous state
-
+    previousFocusElement.focus()  // retains the editing item from previous focus taskItem
+    // In the editing pane
   }
   
   const enterEditMode = (task) => {
     setEditedTask(task)
     setIsEditing(true)
+    setPreviousFocusElement(document.activeElement)
   }
 
   return (
@@ -63,6 +67,7 @@ function App() {
           editedTask={editedTask}
           updateTask={updateTask}
           enterEditMode={enterEditMode}
+          closeEditMode={closeEditMode}
         />
         )
       }

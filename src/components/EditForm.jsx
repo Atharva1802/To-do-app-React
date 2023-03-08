@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 
@@ -6,8 +6,21 @@ import { useState } from 'react';
 import { CheckIcon } from '@heroicons/react/24/solid'
 
 // destructured prop in the arrow fucntion below (from App.jsx)
-const EditForm = ({ editedTask, updateTask }) => {
+const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
   const [updatedTaskName, setupdatedTaskName] = useState(editedTask.name);
+
+  useEffect(() => {
+    const closeModalIfEscaped = (e) => {
+      e.key === 'Escape' && closeEditMode()
+    }
+    window.addEventListener('keydown',
+      closeModalIfEscaped)
+    
+    // Cleanup Function for keydown listener
+    return () => {
+      window.removeEventListener('keydown', closeModalIfEscaped)
+    }
+  }, [])
 
   const handleFormSubmit = (e) => {
     e.preventDefault();     // prevents alteration on refresh
