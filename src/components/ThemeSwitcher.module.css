@@ -1,0 +1,15 @@
+/*  This is the switcher module CSS
+    This would work with the ThemeSwitcher.jsx
+*/
+
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    --wrapperSize: clamp(4em, 3vmax, 7em);
+    padding: 1em 2em;
+    width: 100%;
+    display: grid;
+    --_size: 1.5rem;
+    place-items: center;
+}

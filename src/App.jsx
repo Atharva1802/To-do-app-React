@@ -8,6 +8,9 @@ import CustomForm from './components/CustomForm'
 import EditForm from './components/EditForm';
 import TaskList from './components/TaskList';
 
+// import Theme Switcher
+import ThemeSwitcher from './components/ThemeSwitcher'
+
 function App() {
   const [tasks, setTasks] = useLocalStorage('react-todo.tasks', []);    // Instead of useState, inorder to save the task after refresh, I've created a custom hook.
   const [editedTask, setEditedTask] = useState(null);
@@ -75,7 +78,10 @@ function App() {
         )
       }
 
-      {/* Theme Switcher Functionality */}
+      {/* Theme Switcher Functionality: can be added to any app with this code */}
+      <ThemeSwitcher
+
+      />
       
       
       {/* Tasks iff exists is passed to task list and it is called */}
