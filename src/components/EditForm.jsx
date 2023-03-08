@@ -31,7 +31,7 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
     <div
       role="dialog"
       aria-labelledby='editTask'
-      onClick ={(e) => {e.target === e.currentTarget && closeEditMode()}}
+      onClick ={(e) => {e.target === e.currentTarget && closeEditMode() }}
     >
     <form
       className="todo"
