@@ -11,7 +11,7 @@ const EditForm = ({ editedTask, updateTask }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();     // prevents alteration on refresh
-    // updateTask()
+    updateTask({...editedTask, name: updatedTaskName })
   }
 
   return (

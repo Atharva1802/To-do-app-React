@@ -28,15 +28,22 @@ function App() {
     )))
   }
 
-    const updateTask = (task) => {
-    setTasks(prevState => prevState.map(t => (
+  const updateTask = (task) => {
+  setTasks(prevState => prevState.map(t => (
 
-      t.id === task.id
-        ? { ...t, name: task.name }
-        : t   // Updates task iff not already id'd
-    )))
-      // TODO: To close Edit Task mode
-    }
+    t.id === task.id
+      ? { ...t, name: task.name }
+      : t   // Updates task iff not already id'd
+  )))
+    // TODO: To close Edit Task mode
+    closeEditMode();
+  }
+  
+  const closeEditMode = () => {
+    setIsEditing(false)
+    // set focus to the previous state
+
+  }
   
   const enterEditMode = (task) => {
     setEditedTask(task)
