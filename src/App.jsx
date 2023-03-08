@@ -30,6 +30,7 @@ function App() {
       <header>
         <h1>My Task List</h1>
       </header>
+      <EditForm />
        {/* Gives CustomForm access to this Function form App.jsx */}
       <CustomForm addTask={addTask} />
       {/* Tasks iff exists is passed to task list and it is called */}
