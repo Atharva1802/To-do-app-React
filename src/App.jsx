@@ -74,6 +74,8 @@ function App() {
         />
         )
       }
+
+      {/* Theme Switcher Functionality */}
       
       
       {/* Tasks iff exists is passed to task list and it is called */}
