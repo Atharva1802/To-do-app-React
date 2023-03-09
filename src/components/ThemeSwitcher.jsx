@@ -18,6 +18,11 @@ const ThemeSwitcher = () => {
         document.documentElement.setAttribute('color-scheme', theme)
     }, [theme])
 
+    useEffect(() => {
+        document.documentElement.style.setProperty('--_hue', hue)
+    }, [hue])
+
+
     return (
       <aside
         className={styles.wrapper}
