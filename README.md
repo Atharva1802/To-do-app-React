@@ -7,10 +7,11 @@ You can see a live demo of the application here.
 ## Installation
 To get started with the application, follow these steps:
 
-## Clone the repository to your local machine
-Run npm install to install the dependencies
-Run npm run dev to start the development server
-Navigate to http://localhost:3000 in your web browser to view the application
+- Clone the repository to your local machine
+- Run `npm install` to install the dependencies
+- Run `npm run dev` to start the development server
+- Navigate to `http://localhost:3000` in your web browser to view the application
+
 
 ## Usage
 - To add a task to the list, enter the task name in the input field and click the "Add Task" button. 
