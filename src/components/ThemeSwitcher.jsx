@@ -6,10 +6,14 @@ import styles from './ThemeSwitcher.module.css'
 // import icons
 import { XMarkIcon, SunIcon, MoonIcon, SwatchIcon } from '@heroicons/react/24/outline'
 
+// import custom hooks
+import useLocalStorage from '../hooks/useLocalStorage'
+
 const ThemeSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false) // State to pick and set color 
-  const [theme, setTheme] = useState('light')   // State to pick and set theme
-  const [hue, setHue] = useState('158')    // change this hue and default accent color changes
+  const defaultDark = window.matchMedia('prefers-color-scheme: dark').matches
+  const [theme, setTheme] = useLocalStorage('react-todo.theme', defaultDark ? "dark" : "light")   // State to pick and set theme
+  const [hue, setHue] = useLocalStorage('react-todo.color','158')    // change this hue and default accent color changes
   
   // Easiest way to handle a changing piece of State is useEffect hook
     // Here accent color picker is bought to oaction using use effec Hook
@@ -26,7 +30,11 @@ const ThemeSwitcher = () => {
     return (
       <aside
         className={styles.wrapper}
-        //style
+            style={{
+                backgroundColor: isColorPicking
+                    ? 'hsl(var(--muted)/ .6)'
+                    : 'transparent'
+        }}
       > 
         {
             isColorPicking
